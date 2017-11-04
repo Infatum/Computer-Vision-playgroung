@@ -6,6 +6,7 @@ import os
 from scipy.misc import imread
 import platform
 
+
 def load_pickle(f):
     version = platform.python_version_tuple()
     if version[0] == '2':
@@ -13,6 +14,7 @@ def load_pickle(f):
     elif version[0] == '3':
         return  pickle.load(f, encoding='latin1')
     raise ValueError("invalid python version: {}".format(version))
+
 
 def load_CIFAR_batch(filename):
   """ load single batch of cifar """
@@ -23,6 +25,7 @@ def load_CIFAR_batch(filename):
     X = X.reshape(10000, 3, 32, 32).transpose(0,2,3,1).astype("float")
     Y = np.array(Y)
     return X, Y
+
 
 def load_CIFAR10(ROOT):
   """ load all of cifar """
@@ -179,6 +182,7 @@ def load_tiny_imagenet(path, dtype=np.float32, subtract_mean=True):
 
   y_test = None
   y_test_file = os.path.join(path, 'test', 'test_annotations.txt')
+
   if os.path.isfile(y_test_file):
     with open(y_test_file, 'r') as f:
       img_file_to_wnid = {}

@@ -73,10 +73,10 @@ class KNearestNeighbor(object):
         # training point, and store the result in dists[i, j]. You should   #
         # not use a loop over dimension.                                    #
         #####################################################################
-        pass
-        #####################################################################
-        #                       END OF YOUR CODE                            #
-        #####################################################################
+        if i == j:
+          dist = np.sqrt(np.square(self.X_train[i][j] - X[i][j]))
+          print(f'X_train[{i}][{j}] - X_test[{i}][{j}] = {dist}')
+        dists[i][j] = dist
     return dists
 
   def compute_distances_one_loop(self, X):
